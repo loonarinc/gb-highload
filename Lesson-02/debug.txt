@@ -1,0 +1,81 @@
+Notice: Undefined variable: time_end in /var/www/mysite.local/index.php on line 16
+Call Stack
+#	Time	Memory	Function	Location
+1	0.0029	397672	{main}( )	.../index.php:0
+Dump $_SERVER
+$_SERVER['REQUEST_METHOD'] =
+/var/www/mysite.local/index.php:16:string 'GET' (length=3)
+$_SERVER['REQUEST_URI'] =
+/var/www/mysite.local/index.php:16:string '/' (length=1)
+$_SERVER['HTTP_USER_AGENT'] =
+/var/www/mysite.local/index.php:16:string 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36' (length=115)
+Dump $_REQUEST
+Variables in local scope (#1)
+$log =
+/var/www/mysite.local/index.php:16:
+object(Monolog\Logger)[3]
+  protected 'name' => string 'name' (length=4)
+  protected 'handlers' => 
+    array (size=1)
+      0 => 
+        object(Monolog\Handler\StreamHandler)[2]
+          protected 'stream' => resource(18, stream)
+          protected 'url' => string '/var/www/mysite.local/log/my.log' (length=32)
+          private 'errorMessage' => null
+          protected 'filePermission' => null
+          protected 'useLocking' => boolean false
+          private 'dirCreated' => boolean true
+          protected 'level' => int 100
+          protected 'bubble' => boolean true
+          protected 'formatter' => 
+            object(Monolog\Formatter\LineFormatter)[6]
+              ...
+          protected 'processors' => 
+            array (size=0)
+              ...
+  protected 'processors' => 
+    array (size=0)
+      empty
+  protected 'microsecondTimestamps' => boolean true
+  protected 'exceptionHandler' => null
+$time_end =
+Undefined
+$time_start =
+/var/www/mysite.local/index.php:16:int 1598345958
+
+( ! ) Notice: Undefined variable: time_end in /var/www/mysite.local/index.php on line 17
+Call Stack
+#	Time	Memory	Function	Location
+1	0.0029	397672	{main}( )	.../index.php:0
+Variables in local scope (#1)
+$log =
+/var/www/mysite.local/index.php:17:
+object(Monolog\Logger)[3]
+  protected 'name' => string 'name' (length=4)
+  protected 'handlers' => 
+    array (size=1)
+      0 => 
+        object(Monolog\Handler\StreamHandler)[2]
+          protected 'stream' => resource(18, stream)
+          protected 'url' => string '/var/www/mysite.local/log/my.log' (length=32)
+          private 'errorMessage' => null
+          protected 'filePermission' => null
+          protected 'useLocking' => boolean false
+          private 'dirCreated' => boolean true
+          protected 'level' => int 100
+          protected 'bubble' => boolean true
+          protected 'formatter' => 
+            object(Monolog\Formatter\LineFormatter)[6]
+              ...
+          protected 'processors' => 
+            array (size=0)
+              ...
+  protected 'processors' => 
+    array (size=0)
+      empty
+  protected 'microsecondTimestamps' => boolean true
+  protected 'exceptionHandler' => null
+$time_end =
+Undefined
+$time_start =
+/var/www/mysite.local/index.php:17:int 1598345958
