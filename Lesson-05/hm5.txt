@@ -1,0 +1,88 @@
+login as: loonar
+loonar@172.21.7.195's password:
+Last login: Tue Sep  1 06:09:08 2020 from loonar-laptop.mshome.net
+[loonar@localhost ~]$ sudo yum install redis php72-php-pecl-redis
+[sudo] password for loonar:
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+epel/x86_64/metalink                                                                                                | 7.6 kB  00:00:00
+ * base: mirror.axelname.ru
+ * epel: mirrors.powernet.com.ru
+ * extras: mirror.axelname.ru
+ * remi-safe: remirepo.reloumirrors.net
+ * updates: mirror.axelname.ru
+base                                                                                                                | 3.6 kB  00:00:00
+epel                                                                                                                | 4.7 kB  00:00:00
+extras                                                                                                              | 2.9 kB  00:00:00
+prel-release-x86_64                                                                                                 | 2.9 kB  00:00:00
+ps-80-release-x86_64                                                                                                | 2.9 kB  00:00:00
+remi-safe                                                                                                           | 3.0 kB  00:00:00
+tools-release-x86_64                                                                                                | 2.9 kB  00:00:00
+updates                                                                                                             | 2.9 kB  00:00:00
+(1/6): epel/x86_64/updateinfo                                                                                       | 1.0 MB  00:00:00
+(2/6): prel-release-x86_64/7/primary_db                                                                             | 1.9 kB  00:00:00
+(3/6): tools-release-x86_64/7/primary_db                                                                            |  78 kB  00:00:00
+(4/6): remi-safe/primary_db                                                                                         | 1.8 MB  00:00:01
+(5/6): epel/x86_64/primary_db                                                                                       | 6.9 MB  00:00:01
+(6/6): updates/7/x86_64/primary_db                                                                                  | 4.5 MB  00:00:01
+Resolving Dependencies
+--> Running transaction check
+---> Package php72-php-pecl-redis.x86_64 0:3.1.6-1.el7.remi will be installed
+--> Processing Dependency: php72-php-pecl(igbinary)(x86-64) for package: php72-php-pecl-redis-3.1.6-1.el7.remi.x86_64
+---> Package redis.x86_64 0:3.2.12-2.el7 will be installed
+--> Processing Dependency: libjemalloc.so.1()(64bit) for package: redis-3.2.12-2.el7.x86_64
+--> Running transaction check
+---> Package jemalloc.x86_64 0:3.6.0-3.el7 will be installed
+---> Package php72-php-pecl-igbinary.x86_64 0:3.1.5-1.el7.remi will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+===========================================================================================================================================
+ Package                                Arch                  Version                            Repository                           Size
+===========================================================================================================================================
+Installing:
+ php72-php-pecl-redis                   x86_64                3.1.6-1.el7.remi                   remi-safe                           156 k
+ redis                                  x86_64                3.2.12-2.el7                       epel                                544 k
+Installing for dependencies:
+ jemalloc                               x86_64                3.6.0-3.el7                        tools-release-x86_64                110 k
+ php72-php-pecl-igbinary                x86_64                3.1.5-1.el7.remi                   remi-safe                            67 k
+
+Transaction Summary
+===========================================================================================================================================
+Install  2 Packages (+2 Dependent packages)
+
+Total download size: 878 k
+Installed size: 2.2 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/4): php72-php-pecl-igbinary-3.1.5-1.el7.remi.x86_64.rpm                                                          |  67 kB  00:00:00
+(2/4): php72-php-pecl-redis-3.1.6-1.el7.remi.x86_64.rpm                                                             | 156 kB  00:00:00
+(3/4): jemalloc-3.6.0-3.el7.x86_64.rpm                                                                              | 110 kB  00:00:00
+(4/4): redis-3.2.12-2.el7.x86_64.rpm                                                                                | 544 kB  00:00:00
+-------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                      1.2 MB/s | 878 kB  00:00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : php72-php-pecl-igbinary-3.1.5-1.el7.remi.x86_64                                                                         1/4
+  Installing : jemalloc-3.6.0-3.el7.x86_64                                                                                             2/4
+  Installing : redis-3.2.12-2.el7.x86_64                                                                                               3/4
+  Installing : php72-php-pecl-redis-3.1.6-1.el7.remi.x86_64                                                                            4/4
+  Verifying  : jemalloc-3.6.0-3.el7.x86_64                                                                                             1/4
+  Verifying  : redis-3.2.12-2.el7.x86_64                                                                                               2/4
+  Verifying  : php72-php-pecl-igbinary-3.1.5-1.el7.remi.x86_64                                                                         3/4
+  Verifying  : php72-php-pecl-redis-3.1.6-1.el7.remi.x86_64                                                                            4/4
+
+Installed:
+  php72-php-pecl-redis.x86_64 0:3.1.6-1.el7.remi                                redis.x86_64 0:3.2.12-2.el7
+
+Dependency Installed:
+  jemalloc.x86_64 0:3.6.0-3.el7                              php72-php-pecl-igbinary.x86_64 0:3.1.5-1.el7.remi
+
+Complete!
+[loonar@localhost ~]$
+[loonar@localhost ~]$ sudo systemctl start redis
+
+[loonar@localhost ~]$ sudo systemctl restart php72-php-fpm
