@@ -1,0 +1,503 @@
+[loonar@localhost mysite.local]$ sudo rpm -ivh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
+[sudo] password for loonar:
+Retrieving https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
+warning: /var/tmp/rpm-tmp.VrGxOJ: Header V4 RSA/SHA512 Signature, key ID a14fe591: NOKEY
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:zabbix-release-4.0-1.el7         ################################# [100%]
+[loonar@localhost mysite.local]$ sudo yum-config-manager --enable rhel-7-server-optional-rpms
+sudo: yum-config-manager: command not found
+[loonar@localhost mysite.local]$ sudo yum install yum-utils
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirrors.powernet.com.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: mirror.netsite.dk
+ * updates: mirror.sale-dedic.com
+zabbix                                                                                                                                                                                   | 2.9 kB  00:00:00
+zabbix-non-supported                                                                                                                                                                     |  951 B  00:00:00
+zabbix/x86_64/primary_db                                                                                                                                                                 | 184 kB  00:00:01
+zabbix-non-supported/x86_64/primary                                                                                                                                                      | 1.6 kB  00:00:00
+zabbix-non-supported                                                                                                                                                                                        4/4
+Resolving Dependencies
+--> Running transaction check
+---> Package yum-utils.noarch 0:1.1.31-54.el7_8 will be installed
+--> Processing Dependency: python-kitchen for package: yum-utils-1.1.31-54.el7_8.noarch
+--> Processing Dependency: libxml2-python for package: yum-utils-1.1.31-54.el7_8.noarch
+--> Running transaction check
+---> Package libxml2-python.x86_64 0:2.9.1-6.el7.4 will be installed
+---> Package python-kitchen.noarch 0:1.1.1-5.el7 will be installed
+--> Processing Dependency: python-chardet for package: python-kitchen-1.1.1-5.el7.noarch
+--> Running transaction check
+---> Package python-chardet.noarch 0:2.2.1-3.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================================================================================================================================================
+ Package                                              Arch                                         Version                                                  Repository                                     Size
+================================================================================================================================================================================================================
+Installing:
+ yum-utils                                            noarch                                       1.1.31-54.el7_8                                          updates                                       122 k
+Installing for dependencies:
+ libxml2-python                                       x86_64                                       2.9.1-6.el7.4                                            base                                          247 k
+ python-chardet                                       noarch                                       2.2.1-3.el7                                              base                                          227 k
+ python-kitchen                                       noarch                                       1.1.1-5.el7                                              base                                          267 k
+
+Transaction Summary
+================================================================================================================================================================================================================
+Install  1 Package (+3 Dependent packages)
+
+Total download size: 862 k
+Installed size: 4.3 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/4): python-chardet-2.2.1-3.el7.noarch.rpm                                                                                                                                             | 227 kB  00:00:00
+(2/4): yum-utils-1.1.31-54.el7_8.noarch.rpm                                                                                                                                              | 122 kB  00:00:00
+(3/4): libxml2-python-2.9.1-6.el7.4.x86_64.rpm                                                                                                                                           | 247 kB  00:00:00
+(4/4): python-kitchen-1.1.1-5.el7.noarch.rpm                                                                                                                                             | 267 kB  00:00:00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                                           1.2 MB/s | 862 kB  00:00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+Warning: RPMDB altered outside of yum.
+  Installing : python-chardet-2.2.1-3.el7.noarch                                                                                                                                                            1/4
+  Installing : python-kitchen-1.1.1-5.el7.noarch                                                                                                                                                            2/4
+  Installing : libxml2-python-2.9.1-6.el7.4.x86_64                                                                                                                                                          3/4
+  Installing : yum-utils-1.1.31-54.el7_8.noarch                                                                                                                                                             4/4
+  Verifying  : libxml2-python-2.9.1-6.el7.4.x86_64                                                                                                                                                          1/4
+  Verifying  : python-kitchen-1.1.1-5.el7.noarch                                                                                                                                                            2/4
+  Verifying  : yum-utils-1.1.31-54.el7_8.noarch                                                                                                                                                             3/4
+  Verifying  : python-chardet-2.2.1-3.el7.noarch                                                                                                                                                            4/4
+
+Installed:
+  yum-utils.noarch 0:1.1.31-54.el7_8
+
+Dependency Installed:
+  libxml2-python.x86_64 0:2.9.1-6.el7.4                                 python-chardet.noarch 0:2.2.1-3.el7                                 python-kitchen.noarch 0:1.1.1-5.el7
+
+Complete!
+[loonar@localhost mysite.local]$ sudo yum-config-manager --enable rhel-7-server-optional-rpms
+Loaded plugins: fastestmirror
+[loonar@localhost mysite.local]$ sudo yum install zabbix-server-mysql zabbix-web-mysql
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirrors.powernet.com.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: mirror.netsite.dk
+ * updates: mirror.sale-dedic.com
+Resolving Dependencies
+--> Running transaction check
+---> Package zabbix-server-mysql.x86_64 0:4.0.24-1.el7 will be installed
+--> Processing Dependency: fping for package: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Processing Dependency: libnetsnmp.so.31()(64bit) for package: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Processing Dependency: libOpenIPMIposix.so.0()(64bit) for package: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Processing Dependency: libevent-2.0.so.5()(64bit) for package: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Processing Dependency: libiksemel.so.3()(64bit) for package: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Processing Dependency: libOpenIPMI.so.0()(64bit) for package: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Processing Dependency: libodbc.so.2()(64bit) for package: zabbix-server-mysql-4.0.24-1.el7.x86_64
+---> Package zabbix-web-mysql.noarch 0:4.0.24-1.el7 will be installed
+--> Processing Dependency: zabbix-web = 4.0.24-1.el7 for package: zabbix-web-mysql-4.0.24-1.el7.noarch
+--> Processing Dependency: php-mysql for package: zabbix-web-mysql-4.0.24-1.el7.noarch
+--> Running transaction check
+---> Package OpenIPMI-libs.x86_64 0:2.0.27-1.el7 will be installed
+--> Processing Dependency: OpenIPMI-modalias = 2.0.27-1.el7 for package: OpenIPMI-libs-2.0.27-1.el7.x86_64
+---> Package fping.x86_64 0:3.10-4.el7 will be installed
+---> Package iksemel.x86_64 0:1.4-2.el7.centos will be installed
+--> Processing Dependency: libgnutls.so.28(GNUTLS_1_4)(64bit) for package: iksemel-1.4-2.el7.centos.x86_64
+--> Processing Dependency: libgnutls.so.28()(64bit) for package: iksemel-1.4-2.el7.centos.x86_64
+---> Package libevent.x86_64 0:2.0.21-4.el7 will be installed
+---> Package net-snmp-libs.x86_64 1:5.7.2-48.el7_8.1 will be installed
+---> Package php-mysql.x86_64 0:5.4.16-48.el7 will be installed
+---> Package unixODBC.x86_64 0:2.3.1-14.el7 will be installed
+--> Processing Dependency: libltdl.so.7()(64bit) for package: unixODBC-2.3.1-14.el7.x86_64
+---> Package zabbix-web.noarch 0:4.0.24-1.el7 will be installed
+--> Processing Dependency: php >= 5.4 for package: zabbix-web-4.0.24-1.el7.noarch
+--> Processing Dependency: httpd for package: zabbix-web-4.0.24-1.el7.noarch
+--> Processing Dependency: php-bcmath for package: zabbix-web-4.0.24-1.el7.noarch
+--> Processing Dependency: php-ldap for package: zabbix-web-4.0.24-1.el7.noarch
+--> Running transaction check
+---> Package OpenIPMI-modalias.x86_64 0:2.0.27-1.el7 will be installed
+--> Processing Dependency: OpenIPMI for package: OpenIPMI-modalias-2.0.27-1.el7.x86_64
+---> Package gnutls.x86_64 0:3.3.29-9.el7_6 will be installed
+--> Processing Dependency: trousers >= 0.3.11.2 for package: gnutls-3.3.29-9.el7_6.x86_64
+--> Processing Dependency: libnettle.so.4()(64bit) for package: gnutls-3.3.29-9.el7_6.x86_64
+--> Processing Dependency: libhogweed.so.2()(64bit) for package: gnutls-3.3.29-9.el7_6.x86_64
+---> Package httpd.x86_64 0:2.4.6-93.el7.centos will be installed
+--> Processing Dependency: httpd-tools = 2.4.6-93.el7.centos for package: httpd-2.4.6-93.el7.centos.x86_64
+--> Processing Dependency: /etc/mime.types for package: httpd-2.4.6-93.el7.centos.x86_64
+--> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.4.6-93.el7.centos.x86_64
+--> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.4.6-93.el7.centos.x86_64
+---> Package libtool-ltdl.x86_64 0:2.4.2-22.el7_3 will be installed
+---> Package php.x86_64 0:5.4.16-48.el7 will be installed
+---> Package php-bcmath.x86_64 0:5.4.16-48.el7 will be installed
+---> Package php-ldap.x86_64 0:5.4.16-48.el7 will be installed
+--> Running transaction check
+---> Package OpenIPMI.x86_64 0:2.0.27-1.el7 will be installed
+---> Package apr.x86_64 0:1.4.8-5.el7 will be installed
+---> Package apr-util.x86_64 0:1.5.2-6.el7 will be installed
+---> Package httpd-tools.x86_64 0:2.4.6-93.el7.centos will be installed
+---> Package mailcap.noarch 0:2.1.41-2.el7 will be installed
+---> Package nettle.x86_64 0:2.7.1-8.el7 will be installed
+---> Package trousers.x86_64 0:0.3.14-2.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================================================================================================================================================
+ Package                                              Arch                                    Version                                               Repository                                             Size
+================================================================================================================================================================================================================
+Installing:
+ zabbix-server-mysql                                  x86_64                                  4.0.24-1.el7                                          zabbix                                                2.2 M
+ zabbix-web-mysql                                     noarch                                  4.0.24-1.el7                                          zabbix                                                 11 k
+Installing for dependencies:
+ OpenIPMI                                             x86_64                                  2.0.27-1.el7                                          base                                                  243 k
+ OpenIPMI-libs                                        x86_64                                  2.0.27-1.el7                                          base                                                  523 k
+ OpenIPMI-modalias                                    x86_64                                  2.0.27-1.el7                                          base                                                   16 k
+ apr                                                  x86_64                                  1.4.8-5.el7                                           base                                                  103 k
+ apr-util                                             x86_64                                  1.5.2-6.el7                                           base                                                   92 k
+ fping                                                x86_64                                  3.10-4.el7                                            epel                                                   46 k
+ gnutls                                               x86_64                                  3.3.29-9.el7_6                                        base                                                  680 k
+ httpd                                                x86_64                                  2.4.6-93.el7.centos                                   base                                                  2.7 M
+ httpd-tools                                          x86_64                                  2.4.6-93.el7.centos                                   base                                                   92 k
+ iksemel                                              x86_64                                  1.4-2.el7.centos                                      zabbix-non-supported                                   49 k
+ libevent                                             x86_64                                  2.0.21-4.el7                                          base                                                  214 k
+ libtool-ltdl                                         x86_64                                  2.4.2-22.el7_3                                        base                                                   49 k
+ mailcap                                              noarch                                  2.1.41-2.el7                                          base                                                   31 k
+ net-snmp-libs                                        x86_64                                  1:5.7.2-48.el7_8.1                                    updates                                               751 k
+ nettle                                               x86_64                                  2.7.1-8.el7                                           base                                                  327 k
+ php                                                  x86_64                                  5.4.16-48.el7                                         base                                                  1.4 M
+ php-bcmath                                           x86_64                                  5.4.16-48.el7                                         base                                                   58 k
+ php-ldap                                             x86_64                                  5.4.16-48.el7                                         base                                                   53 k
+ php-mysql                                            x86_64                                  5.4.16-48.el7                                         base                                                  102 k
+ trousers                                             x86_64                                  0.3.14-2.el7                                          base                                                  289 k
+ unixODBC                                             x86_64                                  2.3.1-14.el7                                          base                                                  413 k
+ zabbix-web                                           noarch                                  4.0.24-1.el7                                          zabbix                                                2.9 M
+
+Transaction Summary
+================================================================================================================================================================================================================
+Install  2 Packages (+22 Dependent packages)
+
+Total download size: 13 M
+Installed size: 47 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/24): OpenIPMI-modalias-2.0.27-1.el7.x86_64.rpm                                                                                                                                        |  16 kB  00:00:00
+(2/24): OpenIPMI-libs-2.0.27-1.el7.x86_64.rpm                                                                                                                                            | 523 kB  00:00:00
+(3/24): apr-1.4.8-5.el7.x86_64.rpm                                                                                                                                                       | 103 kB  00:00:00
+(4/24): OpenIPMI-2.0.27-1.el7.x86_64.rpm                                                                                                                                                 | 243 kB  00:00:00
+(5/24): httpd-tools-2.4.6-93.el7.centos.x86_64.rpm                                                                                                                                       |  92 kB  00:00:00
+(6/24): apr-util-1.5.2-6.el7.x86_64.rpm                                                                                                                                                  |  92 kB  00:00:00
+(7/24): gnutls-3.3.29-9.el7_6.x86_64.rpm                                                                                                                                                 | 680 kB  00:00:00
+(8/24): libevent-2.0.21-4.el7.x86_64.rpm                                                                                                                                                 | 214 kB  00:00:00
+(9/24): libtool-ltdl-2.4.2-22.el7_3.x86_64.rpm                                                                                                                                           |  49 kB  00:00:00
+(10/24): mailcap-2.1.41-2.el7.noarch.rpm                                                                                                                                                 |  31 kB  00:00:00
+(11/24): nettle-2.7.1-8.el7.x86_64.rpm                                                                                                                                                   | 327 kB  00:00:00
+(12/24): httpd-2.4.6-93.el7.centos.x86_64.rpm                                                                                                                                            | 2.7 MB  00:00:00
+(13/24): php-5.4.16-48.el7.x86_64.rpm                                                                                                                                                    | 1.4 MB  00:00:00
+(14/24): php-bcmath-5.4.16-48.el7.x86_64.rpm                                                                                                                                             |  58 kB  00:00:00
+(15/24): php-ldap-5.4.16-48.el7.x86_64.rpm                                                                                                                                               |  53 kB  00:00:00
+(16/24): php-mysql-5.4.16-48.el7.x86_64.rpm                                                                                                                                              | 102 kB  00:00:00
+(17/24): trousers-0.3.14-2.el7.x86_64.rpm                                                                                                                                                | 289 kB  00:00:00
+(18/24): net-snmp-libs-5.7.2-48.el7_8.1.x86_64.rpm                                                                                                                                       | 751 kB  00:00:00
+(19/24): unixODBC-2.3.1-14.el7.x86_64.rpm                                                                                                                                                | 413 kB  00:00:00
+(20/24): fping-3.10-4.el7.x86_64.rpm                                                                                                                                                     |  46 kB  00:00:00
+warning: /var/cache/yum/x86_64/7/zabbix-non-supported/packages/iksemel-1.4-2.el7.centos.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 79ea5ed4: NOKEY                      ] 3.3 MB/s | 8.1 MB  00:00:01 ETA
+Public key for iksemel-1.4-2.el7.centos.x86_64.rpm is not installed
+(21/24): iksemel-1.4-2.el7.centos.x86_64.rpm                                                                                                                                             |  49 kB  00:00:01
+warning: /var/cache/yum/x86_64/7/zabbix/packages/zabbix-server-mysql-4.0.24-1.el7.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID a14fe591: NOKEY=========-                ] 2.8 MB/s |  10 MB  00:00:00 ETA
+Public key for zabbix-server-mysql-4.0.24-1.el7.x86_64.rpm is not installed
+(22/24): zabbix-server-mysql-4.0.24-1.el7.x86_64.rpm                                                                                                                                     | 2.2 MB  00:00:02
+(23/24): zabbix-web-mysql-4.0.24-1.el7.noarch.rpm                                                                                                                                        |  11 kB  00:00:00
+(24/24): zabbix-web-4.0.24-1.el7.noarch.rpm                                                                                                                                              | 2.9 MB  00:00:02
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                                           3.1 MB/s |  13 MB  00:00:04
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
+Importing GPG key 0xA14FE591:
+ Userid     : "Zabbix LLC <packager@zabbix.com>"
+ Fingerprint: a184 8f53 52d0 22b9 471d 83d0 082a b56b a14f e591
+ Package    : zabbix-release-4.0-1.el7.noarch (installed)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
+Is this ok [y/N]: y
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+Importing GPG key 0x79EA5ED4:
+ Userid     : "Zabbix SIA <packager@zabbix.com>"
+ Fingerprint: fbab d5fb 2025 5eca b22e e194 d13d 58e4 79ea 5ed4
+ Package    : zabbix-release-4.0-1.el7.noarch (installed)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+Is this ok [y/N]: y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : apr-1.4.8-5.el7.x86_64                                                                                                                                                                      1/24
+  Installing : apr-util-1.5.2-6.el7.x86_64                                                                                                                                                                 2/24
+  Installing : 1:net-snmp-libs-5.7.2-48.el7_8.1.x86_64                                                                                                                                                     3/24
+  Installing : OpenIPMI-libs-2.0.27-1.el7.x86_64                                                                                                                                                           4/24
+  Installing : OpenIPMI-2.0.27-1.el7.x86_64                                                                                                                                                                5/24
+  Installing : OpenIPMI-modalias-2.0.27-1.el7.x86_64                                                                                                                                                       6/24
+  Installing : httpd-tools-2.4.6-93.el7.centos.x86_64                                                                                                                                                      7/24
+  Installing : php-bcmath-5.4.16-48.el7.x86_64                                                                                                                                                             8/24
+  Installing : libevent-2.0.21-4.el7.x86_64                                                                                                                                                                9/24
+  Installing : php-mysql-5.4.16-48.el7.x86_64                                                                                                                                                             10/24
+  Installing : libtool-ltdl-2.4.2-22.el7_3.x86_64                                                                                                                                                         11/24
+  Installing : unixODBC-2.3.1-14.el7.x86_64                                                                                                                                                               12/24
+  Installing : php-ldap-5.4.16-48.el7.x86_64                                                                                                                                                              13/24
+  Installing : fping-3.10-4.el7.x86_64                                                                                                                                                                    14/24
+  Installing : nettle-2.7.1-8.el7.x86_64                                                                                                                                                                  15/24
+  Installing : mailcap-2.1.41-2.el7.noarch                                                                                                                                                                16/24
+  Installing : httpd-2.4.6-93.el7.centos.x86_64                                                                                                                                                           17/24
+  Installing : php-5.4.16-48.el7.x86_64                                                                                                                                                                   18/24
+  Installing : zabbix-web-mysql-4.0.24-1.el7.noarch                                                                                                                                                       19/24
+  Installing : zabbix-web-4.0.24-1.el7.noarch                                                                                                                                                             20/24
+  Installing : trousers-0.3.14-2.el7.x86_64                                                                                                                                                               21/24
+  Installing : gnutls-3.3.29-9.el7_6.x86_64                                                                                                                                                               22/24
+  Installing : iksemel-1.4-2.el7.centos.x86_64                                                                                                                                                            23/24
+  Installing : zabbix-server-mysql-4.0.24-1.el7.x86_64                                                                                                                                                    24/24
+WARNING: ipmi_devintf module isn't available.
+WARNING: ipmi_msghandler module isn't available.
+  Verifying  : trousers-0.3.14-2.el7.x86_64                                                                                                                                                                1/24
+  Verifying  : mailcap-2.1.41-2.el7.noarch                                                                                                                                                                 2/24
+  Verifying  : OpenIPMI-2.0.27-1.el7.x86_64                                                                                                                                                                3/24
+  Verifying  : httpd-2.4.6-93.el7.centos.x86_64                                                                                                                                                            4/24
+  Verifying  : apr-1.4.8-5.el7.x86_64                                                                                                                                                                      5/24
+  Verifying  : unixODBC-2.3.1-14.el7.x86_64                                                                                                                                                                6/24
+  Verifying  : nettle-2.7.1-8.el7.x86_64                                                                                                                                                                   7/24
+  Verifying  : fping-3.10-4.el7.x86_64                                                                                                                                                                     8/24
+  Verifying  : OpenIPMI-modalias-2.0.27-1.el7.x86_64                                                                                                                                                       9/24
+  Verifying  : php-ldap-5.4.16-48.el7.x86_64                                                                                                                                                              10/24
+  Verifying  : zabbix-web-4.0.24-1.el7.noarch                                                                                                                                                             11/24
+  Verifying  : libtool-ltdl-2.4.2-22.el7_3.x86_64                                                                                                                                                         12/24
+  Verifying  : php-mysql-5.4.16-48.el7.x86_64                                                                                                                                                             13/24
+  Verifying  : php-5.4.16-48.el7.x86_64                                                                                                                                                                   14/24
+  Verifying  : gnutls-3.3.29-9.el7_6.x86_64                                                                                                                                                               15/24
+  Verifying  : 1:net-snmp-libs-5.7.2-48.el7_8.1.x86_64                                                                                                                                                    16/24
+  Verifying  : zabbix-web-mysql-4.0.24-1.el7.noarch                                                                                                                                                       17/24
+  Verifying  : libevent-2.0.21-4.el7.x86_64                                                                                                                                                               18/24
+  Verifying  : apr-util-1.5.2-6.el7.x86_64                                                                                                                                                                19/24
+  Verifying  : zabbix-server-mysql-4.0.24-1.el7.x86_64                                                                                                                                                    20/24
+  Verifying  : iksemel-1.4-2.el7.centos.x86_64                                                                                                                                                            21/24
+  Verifying  : php-bcmath-5.4.16-48.el7.x86_64                                                                                                                                                            22/24
+  Verifying  : OpenIPMI-libs-2.0.27-1.el7.x86_64                                                                                                                                                          23/24
+  Verifying  : httpd-tools-2.4.6-93.el7.centos.x86_64                                                                                                                                                     24/24
+
+Installed:
+  zabbix-server-mysql.x86_64 0:4.0.24-1.el7                                                                zabbix-web-mysql.noarch 0:4.0.24-1.el7
+
+Dependency Installed:
+  OpenIPMI.x86_64 0:2.0.27-1.el7     OpenIPMI-libs.x86_64 0:2.0.27-1.el7      OpenIPMI-modalias.x86_64 0:2.0.27-1.el7     apr.x86_64 0:1.4.8-5.el7                     apr-util.x86_64 0:1.5.2-6.el7
+  fping.x86_64 0:3.10-4.el7          gnutls.x86_64 0:3.3.29-9.el7_6           httpd.x86_64 0:2.4.6-93.el7.centos          httpd-tools.x86_64 0:2.4.6-93.el7.centos     iksemel.x86_64 0:1.4-2.el7.centos
+  libevent.x86_64 0:2.0.21-4.el7     libtool-ltdl.x86_64 0:2.4.2-22.el7_3     mailcap.noarch 0:2.1.41-2.el7               net-snmp-libs.x86_64 1:5.7.2-48.el7_8.1      nettle.x86_64 0:2.7.1-8.el7
+  php.x86_64 0:5.4.16-48.el7         php-bcmath.x86_64 0:5.4.16-48.el7        php-ldap.x86_64 0:5.4.16-48.el7             php-mysql.x86_64 0:5.4.16-48.el7             trousers.x86_64 0:0.3.14-2.el7
+  unixODBC.x86_64 0:2.3.1-14.el7     zabbix-web.noarch 0:4.0.24-1.el7
+
+Complete!
+[loonar@localhost mysite.local]$
+
+[loonar@localhost mysite.local]$ mysql -uroot -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.20-11 Percona Server (GPL), Release 11, Revision 5b5a5d2
+
+Copyright (c) 2009-2020 Percona LLC and/or its affiliates
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE zabbix;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'Zabbix1!';
+Query OK, 0 rows affected (0.01 sec)
+
+
+mysql> GRANT ALL PRIVILEGES ON zabbix . * TO 'zabbix'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+
+[loonar@localhost mysite.local]$ cd /usr/share/doc/zabbix-server-mysql-4.0.24/
+[loonar@localhost zabbix-server-mysql-4.0.24]$ ll
+total 2304
+-rw-r--r-- 1 root root      98 Aug 24 04:09 AUTHORS
+-rw-r--r-- 1 root root 1004518 Aug 24 04:09 ChangeLog
+-rw-r--r-- 1 root root   17990 Aug 24 04:09 COPYING
+-rw-r--r-- 1 root root 1314947 Aug 24 04:15 create.sql.gz
+-rw-r--r-- 1 root root      52 Aug 24 04:09 NEWS
+-rw-r--r-- 1 root root    1317 Aug 24 04:09 README
+[loonar@localhost zabbix-server-mysql-4.0.24]$ zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+Enter password:
+[loonar@localhost zabbix-server-mysql-4.0.24]$
+
+sudo nano /etc/zabbix/zabbix_server.conf делаем правки
+
+DBHost=localhost
+DBName=zabbix
+DBUser=zabbix
+DBPassword=Zabbix1!
+
+[loonar@mysite ~]$ sudo nano /etc/nginx/conf.d/zabbix.conf
+[sudo] password for loonar:
+
+server {
+        listen 8080;
+        root /usr/share/zabbix;
+        access_log /var/log/nginx/zabbix.access.log;
+        server_name zabbix.local;
+        location / {
+                index index.php index.html index.htm;
+        }
+        location ~ \.php$ {
+                fastcgi_pass unix:/var/run/php-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+                fastcgi_param PHP_VALUE "
+                max_execution_time = 300
+                memory_limit = 128M
+                post_max_size = 16M
+                upload_max_filesize = 2M
+                max_input_time = 300
+                date.timezone = Europe/Moscow
+                always_populate_raw_post_data = -1";
+                fastcgi_buffers 8 256k;
+                fastcgi_buffer_size 128k;
+                fastcgi_intercept_errors on;
+                fastcgi_busy_buffers_size 256k;
+                fastcgi_temp_file_write_size 256k;
+        }
+}
+
+[loonar@mysite ~]$ sudo chown -R nginx /etc/zabbix/web
+[loonar@mysite ~]$ sudo chown -R nginx /usr/share/zabbix
+[loonar@mysite ~]$
+
+рестарт nginx, идем на mysite.local:8080 - ошибка 500
+PHP message: PHP ConfigFileException:  Config file does not exist. in /usr/share/zabbix/include/classes/core/CConfigFile.php on line 41
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /usr/share/zabbix/index.php:0
+PHP message: PHP   2. require_once() /usr/share/zabbix/index.php:25
+PHP message: PHP   3. Z->run() /usr/share/zabbix/include/config.inc.php:33
+PHP message: PHP   4. Z->loadConfigFile() /usr/share/zabbix/include/classes/core/ZBase.php:127
+PHP message: PHP   5. CConfigFile->load() /usr/share/zabbix/include/classes/core/ZBase.php:296
+PHP message: PHP   6. CConfigFile::exception() /usr/share/zabbix/include/classes/core/CConfigFile.php:58" while reading response header from upstream, client: 172.17.128.1, server: zabbix.local, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php-fpm.sock:", host: "mysite.local:8080"
+2020/09/14 07:42:23 [error] 1388#0: *1 FastCGI sent in stderr: "Passing INI directive through FastCGI: unable to set 'always_populate_raw_post_data'
+PHP message: PHP ConfigFileException:  Config file does not exist. in /usr/share/zabbix/include/classes/core/CConfigFile.php on line 41
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /usr/share/zabbix/setup.php:0
+PHP message: PHP   2. Z->run() /usr/share/zabbix/setup.php:27
+PHP message: PHP   3. Z->loadConfigFile() /usr/share/zabbix/include/classes/core/ZBase.php:143
+PHP message: PHP   4. CConfigFile->load() /usr/share/zabbix/include/classes/core/ZBase.php:296
+PHP message: PHP   5. CConfigFile::exception() /usr/share/zabbix/include/classes/core/CConfigFile.php:58
+PHP message: PHP Exception:  Cannot start session. in /usr/share/zabbix/include/classes/core/CSession.php on line 46
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /usr/share/zabbix/setup.php:0
+PHP message: PHP   2. CSession::start() /usr/share/zabbix/setup.php:60
+PHP message: PHP Fatal error:  Uncaught Exception: Cannot start session. in /usr/share/zabbix/include/classes/core/CSession.php:46
+Stack trace:
+#0 /usr/share/zabbix/setup.php(60): CSession::start()
+#1 {main}
+  thrown in /usr/share/zabbix/include/classes/core/CSession.php on line 46" while reading response header from upstream, client: 172.17.128.1, server: zabbix.local, request: "GET /setup.php HTTP/1.1", upstream: "fastcgi://unix:/var/run/php-fpm.sock:", host: "mysite.local:8080"
+
+
+
+меняем в [loonar@mysite php.d]$ sudo nano /etc/opt/remi/php72/php.ini
+
+session.save_path = "/var/opt/remi/php72/lib/php/session"
+
++ права
+
+[loonar@mysite php.d]$ sudo chmod 770 /var/opt/remi/php72/lib/php/session
+[sudo] password for loonar:
+[loonar@mysite php.d]$ sudo chown :nginx /var/opt/remi/php72/lib/php/session
+[loonar@mysite php.d]$
+[loonar@mysite php.d]$ sudo systemctl restart php72-php-fpm
+[loonar@mysite php.d]$ sudo systemctl restart nginx
+[loonar@mysite php.d]$
+ещё пришлось в xdebug поправить max nesting на 200.
+
+по картинке выяснил, что нужна ещё куча пакетов) методичка на высоте
+
+[loonar@mysite php.d]$ sudo yum install php72-php-bcmath
+[loonar@mysite php.d]$ sudo yum install php72-php-gd
+[loonar@mysite php.d]$ sudo yum install php72-php-xml
+[loonar@mysite php.d]$ sudo yum install php72-php-mbstring
+[loonar@mysite php.d]$ sudo yum install php72-php-mysql
+
+ещё пришлось пересоздать базу mysql> CREATE DATABASE zabbix CHARACTER SET utf8 COLLATE = utf8_bin;
+я явно не указал до этого кодировку
+
+Теперь можно устанавливать zabbix
+вход admin:zabbix
+
+
+
+[loonar@mysite php.d]$ sudo yum install zabbix-agent
+[sudo] password for loonar:
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirrors.powernet.com.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: mirror.netsite.dk
+ * updates: mirror.sale-dedic.com
+Resolving Dependencies
+--> Running transaction check
+---> Package zabbix-agent.x86_64 0:4.0.24-1.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================================================================================================================================================
+ Package                                              Arch                                           Version                                               Repository                                      Size
+================================================================================================================================================================================================================
+Installing:
+ zabbix-agent                                         x86_64                                         4.0.24-1.el7                                          zabbix                                         426 k
+
+Transaction Summary
+================================================================================================================================================================================================================
+Install  1 Package
+
+Total download size: 426 k
+Installed size: 1.6 M
+Is this ok [y/d/N]: y
+Downloading packages:
+zabbix-agent-4.0.24-1.el7.x86_64.rpm                                                                                                                                                     | 426 kB  00:00:01
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : zabbix-agent-4.0.24-1.el7.x86_64                                                                                                                                                             1/1
+  Verifying  : zabbix-agent-4.0.24-1.el7.x86_64                                                                                                                                                             1/1
+
+Installed:
+  zabbix-agent.x86_64 0:4.0.24-1.el7
+
+Complete!
+[loonar@mysite php.d]$ sudo systemctl restart zabbix-agent
+[loonar@mysite php.d]$ sudo systemctl status zabbix-agent
+● zabbix-agent.service - Zabbix Agent
+   Loaded: loaded (/usr/lib/systemd/system/zabbix-agent.service; disabled; vendor preset: disabled)
+   Active: active (running) since Mon 2020-09-14 10:20:11 EDT; 11s ago
+  Process: 1927 ExecStart=/usr/sbin/zabbix_agentd -c $CONFFILE (code=exited, status=0/SUCCESS)
+ Main PID: 1929 (zabbix_agentd)
+   CGroup: /system.slice/zabbix-agent.service
+           ├─1929 /usr/sbin/zabbix_agentd -c /etc/zabbix/zabbix_agentd.conf
+           ├─1930 /usr/sbin/zabbix_agentd: collector [idle 1 sec]
+           ├─1931 /usr/sbin/zabbix_agentd: listener #1 [waiting for connection]
+           ├─1932 /usr/sbin/zabbix_agentd: listener #2 [waiting for connection]
+           ├─1933 /usr/sbin/zabbix_agentd: listener #3 [waiting for connection]
+           └─1934 /usr/sbin/zabbix_agentd: active checks #1 [idle 1 sec]
+
+Sep 14 10:20:11 mysite.local systemd[1]: Starting Zabbix Agent...
+Sep 14 10:20:11 mysite.local systemd[1]: Can't open PID file /run/zabbix/zabbix_agentd.pid (yet?) after start: No such file or directory
+Sep 14 10:20:11 mysite.local systemd[1]: Started Zabbix Agent.
+[loonar@mysite php.d]$

@@ -1,0 +1,38 @@
+Всё по методичке
+Настройка nginx (первый сервер), создадим новый файл upstream.conf:
+upstream backend {
+  server backend1.mysite.local:8080;
+  server backend2.mysite.local:8080;
+}
+
+server {
+  listen 80;
+  server_name mysite.local;
+
+  location / {
+    proxy_pass http://backend;
+  }
+}
+
+изменяем mysite.local.conf (сервер 1, на нём же и балансировка)
+
+    listen 8080;
+    server_name backend1.mysite.local;
+
+
+изменяем mysite.local.conf (сервер 2)
+
+    listen 8080;
+    server_name backend2.mysite.local;
+
+сессии в Memcached.
+редактируем php.ini:
+
+session.save_handler = memcache
+session.save_path = "tcp://mysite.local:11211"
+
+
+
+Симлинки
+например есть папка с продакшн-сайтом - production.mysite.local
+ln —s sudo ln -s mysite.local production.mysite.local
